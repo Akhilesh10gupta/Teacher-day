@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Happy Teacher's Day</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Pacifico&display=swap'); /* Beautiful font import */
+
+        body {
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: #8b5a2b; /* Wooden frame color */
+            height: 100vh;
+            cursor: auto;
+        }
+
+        .chalkboard {
+            width: 90vw;
+            height: 80vh;
+            max-width: 1200px;
+            background-color: #2e7d32; /* Green chalkboard */
+            border: 20px solid #8b5a2b; /* Wooden frame */
+            box-shadow: 0 0 10px #4a2f20;
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            cursor: url('https://cdn-icons-png.flaticon.com/512/2530/2530918.png'), auto; /* Alternate chalk cursor */
+        }
+
+        .container {
+            text-align: center;
+            position: relative;
+            color: white;
+        }
+
+        .colorful-text, .custom-message {
+            font-family: 'Pacifico', cursive; /* Use the beautiful Pacifico font */
+            font-size: 4vw; /* Bigger and more attractive font size */
+            display: inline-block;
+            margin: 0;
+            color:#faff51;
+            font-weight: bold;
+            word-break: break-word;
+            text-shadow: 3px 3px 5px rgba(0, 0, 0, 0.5); /* Add shadow to make it pop */
+        }
+
+        .custom-message {
+            display: none; /* Hide the custom message initially */
+        }
+
+        .small-message {
+            font-family: 'Pacifico', cursive;
+            font-size: 2vw; /* Small font size */
+            color: #white;
+            display: none; /* Hidden initially */
+            margin-top: 20px;
+            word-break: break-word;
+        }
+
+        /* Each letter with a different color */
+        .letter {
+            display: inline-block;
+            transition: transform 0.3s ease;
+        }
+
+        .letter:hover {
+            transform: scale(1.2); /* Slight zoom on hover */
+        }
+
+        /* Responsive font sizing */
+        .letter:nth-child(1) { color: #ff4081; } /* H */
+        .letter:nth-child(2) { color: #ffa726; } /* A */
+        .letter:nth-child(3) { color: #29b6f6; } /* P */
+        .letter:nth-child(4) { color: #66bb6a; } /* P */
+        .letter:nth-child(5) { color: #d4e157; } /* Y */
+        .letter:nth-child(6) { color: #ec407a; } /* Space */
+        .letter:nth-child(7) { color: #8d6e63; } /* T */
+        .letter:nth-child(8) { color: #7e57c2; } /* E */
+        .letter:nth-child(9) { color: #42a5f5; } /* A */
+        .letter:nth-child(10) { color: #ff7043; } /* C */
+        .letter:nth-child(11) { color: #ab47bc; } /* H */
+        .letter:nth-child(12) { color: #26a69a; } /* E */
+        .letter:nth-child(13) { color: #ef5350; } /* R */
+        .letter:nth-child(14) { color: #5c6bc0; } /* ' */
+        .letter:nth-child(15) { color: #ffca28; } /* S */
+        .letter:nth-child(16) { color: #8bc34a; } /* D */
+        .letter:nth-child(17) { color: #ff9800; } /* A */
+        .letter:nth-child(18) { color: #00bcd4; } /* Y */
+
+        .confetti-container {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            overflow: hidden;
+        }
+
+        .confetti {
+            position: absolute;
+            top: -10px;
+            width: 10px;
+            height: 10px;
+            background-color: #ffcc00;
+            opacity: 0.7;
+            border-radius: 50%;
+            animation: fall linear infinite;
+        }
+
+        @keyframes fall {
+            to {
+                transform: translateY(100vh) rotate(720deg);
+            }
+        }
+
+        .chalk-trail {
+            position: absolute;
+            width: 5px;
+            height: 5px;
+            background-color: white;
+            border-radius: 50%;
+            pointer-events: none;
+            box-shadow: 0 0 5px 2px white;
+            animation: fadeOut 2s forwards;
+        }
+
+        @keyframes fadeOut {
+            to {
+                opacity: 0;
+                transform: scale(2);
+            }
+        }
+
+        /* Button styling */
+        .custom-button {
+            position: absolute;
+            bottom: 20px;
+            right: 20px;
+            background-color: #ff4081;
+            color: white;
+            font-size: 1.2rem;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 10px;
+            cursor: pointer;
+            font-family: 'Pacifico', cursive;
+            box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
+            transition: background-color 0.3s ease;
+        }
+
+        .custom-button:hover {
+            background-color: #e91e63;
+        }
+
+        @media (max-width: 768px) {
+            .colorful-text, .custom-message {
+                font-size: 7vw;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .colorful-text, .custom-message {
+                font-size: 9vw;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="chalkboard">
+        <div class="container">
+            <!-- Colorful Text -->
+            <h1 class="colorful-text" id="happy-text">
+                <span class="letter">H</span>
+                <span class="letter">A</span>
+                <span class="letter">P</span>
+                <span class="letter">P</span>
+                <span class="letter">Y</span>
+                <span class="letter"> </span>
+                <span class="letter">T</span>
+                <span class="letter">E</span>
+                <span class="letter">A</span>
+                <span class="letter">C</span>
+                <span class="letter">H</span>
+                <span class="letter">E</span>
+                <span class="letter">R</span>
+                <span class="letter">'</span>
+                <span class="letter">S</span>
+                <span class="letter"> </span>
+                <span class="letter">D</span>
+                <span class="letter">A</span>
+                <span class="letter">Y</span>
+            </h1>
+
+            <!-- Custom Message -->
+            <h1 class="custom-message" id="custom-message">You're the best Guru'ji ever🌋</h1>
+
+            <!-- Small Message -->
+            <h3 class="small-message" id="small-message">To the teacher who taught me more than just subjects, but also patience, kindness, and curiosity. Your lessons shaped my values and made me a better person. Thank you.</h3>
+
+            <!-- Confetti Container -->
+            <div class="confetti-container" id="confetti-container"></div>
+        </div>
+        
+        <!-- Button to switch the message -->
+        <button class="custom-button" id="message-toggle">Click Here</button>
+    </div>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            const confettiContainer = document.getElementById("confetti-container");
+            const happyText = document.getElementById("happy-text");
+            const customMessage = document.getElementById("custom-message");
+            const smallMessage = document.getElementById("small-message");
+            const messageToggle = document.getElementById("message-toggle");
+
+            // Create confetti function
+            function createConfetti() {
+                const confetti = document.createElement("div");
+                confetti.classList.add("confetti");
+                confetti.style.left = Math.random() * 100 + "vw";
+                confetti.style.animationDuration = Math.random() * 2 + 3 + "s";
+                confettiContainer.appendChild(confetti);
+
+                setTimeout(() => {
+                    confetti.remove();
+                }, 5000);
+            }
+
+            setInterval(createConfetti, 200);
+
+            // Toggle between Happy Teacher's Day and the custom message
+            messageToggle.addEventListener("click", () => {
+                if (happyText.style.display === 'none') {
+                    happyText.style.display = 'inline-block';
+                    customMessage.style.display = 'none';
+                    smallMessage.style.display = 'none'; // Hide the small message
+                } else {
+                    happyText.style.display = 'none';
+                    customMessage.style.display = 'inline-block';
+                    smallMessage.style.display = 'inline-block'; // Show the small message
+                }
+            });
+
+            // Create chalk trail
+            const chalkboard = document.querySelector('.chalkboard');
+            const createTrail = (x, y) => {
+                const trail = document.createElement("div");
+                trail.classList.add("chalk-trail");
+                trail.style.left = x + "px";
+                trail.style.top = y + "px";
+                chalkboard.appendChild(trail);
+
+                setTimeout(() => {
+                    trail.remove();
+                }, 2000);
+            };
+
+            // Mousemove event for desktop
+            chalkboard.addEventListener("mousemove", (e) => {
+                const rect = chalkboard.getBoundingClientRect();
+                createTrail(e.clientX - rect.left, e.clientY - rect.top);
+            });
+
+            // Touchmove event for mobile devices
+            chalkboard.addEventListener("touchmove", (e) => {
+                e.preventDefault(); // Prevent scrolling while drawing
+                const rect = chalkboard.getBoundingClientRect();
+                const touch = e.touches[0];
+                createTrail(touch.clientX - rect.left, touch.clientY - rect.top);
+            });
+        });
+    </script>
+</body>
+</html>
